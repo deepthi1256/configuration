@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.3.12.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.config</groupId>
+	<artifactId>configuration</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>configuration</name>
+	<description>Demo project for Spring Boot</description>
+	<properties>
+		<!--    Java version  -->
+		<java.version>1.8</java.version>
+		<!--    Spring fox(Swagger) version-->
+		<springfox.version>3.0.0</springfox.version>
+		<!--    Strati-->
+		<strati.starter.version>3.4.0</strati.starter.version>
+		<!--    azure spring data cosmos-->
+		<azure.spring.data.cosmos.version>3.4.0</azure.spring.data.cosmos.version>
+		<!--    dozer-->
+		<dozer.version>5.5.1</dozer.version>
+		<schaas.common.version>0.0.25</schaas.common.version>
+		<apache.commons.coll.version>4.4</apache.commons.coll.version>
+		<junit.version>4.12</junit.version>
+		<!--<mockito.version>1.10.19</mockito.version>-->
+		<!--    Sonar Start-->
+		<jacoco.version>0.7.9</jacoco.version>
+		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+		<maven-surefire-report-plugin.version>3.0.0-M5</maven-surefire-report-plugin.version>
+		<sonar.coverage.jacoco.xmlReportsPath>target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportsPath>
+		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+		<sonar-jacoco-listeners.version>3.2</sonar-jacoco-listeners.version>
+		<!--    Sonar end-->
+	</properties>
+
+	<!-- *************************************************************** -->
+	<!-- *************************************************************** -->
+	<!--                     Inherited Dependencies                      -->
+	<!-- *************************************************************** -->
+	<!-- *************************************************************** -->
+	<dependencies>
+		<!-- =============================================================== -->
+		<!--                      Spring Dependencies                        -->
+		<!-- =============================================================== -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- =============================================================== -->
+		<!--                      Strati Dependencies                        -->
+		<!-- =============================================================== -->
+		<dependency>
+			<groupId>io.strati.ioc</groupId>
+			<artifactId>strati-af-springboot-starter</artifactId>
+			<version>${strati.starter.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.bouncycastle</groupId>
+					<artifactId>bcprov-jdk16</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- =============================================================== -->
+		<!--                      Walmart Dependencies                       -->
+		<!-- =============================================================== -->
+		<dependency>
+			<groupId>com.walmart.services</groupId>
+			<artifactId>schaas-commons</artifactId>
+			<version>${schaas.common.version}</version>
+		</dependency>
+		<!-- =============================================================== -->
+		<!--                      Third Party Dependencies                   -->
+		<!-- =============================================================== -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-boot-starter</artifactId>
+			<version>${springfox.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>slf4j-api</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.dozer</groupId>
+			<artifactId>dozer</artifactId>
+			<version>${dozer.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+			<version>${apache.commons.coll.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.mockito</groupId>-->
+<!--			<artifactId>mockito-all</artifactId>-->
+<!--			<version>${mockito.version}</version>-->
+<!--			<scope>test</scope>-->
+<!--		</dependency>-->
+		<!-- https://mvnrepository.com/artifact/io.projectreactor/reactor-core -->
+		<dependency>
+			<groupId>io.projectreactor</groupId>
+			<artifactId>reactor-core</artifactId>
+			<version>3.4.19</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.azure</groupId>
+			<artifactId>azure-messaging-servicebus</artifactId>
+			<version>7.9.1</version>
+		</dependency>
+	</dependencies>
+
+	<scm>
+		<url>scm:git:https://gecgithub01.walmart.com/services/configuration.git</url>
+		<connection>scm:git:https://gecgithub01.walmart.com/services/configuration.git</connection>
+		<developerConnection>scm:git:https://gecgithub01.walmart.com/services/configuration.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.azure</groupId>
+				<artifactId>azure-spring-data-cosmos</artifactId>
+				<version>${azure.spring.data.cosmos.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>nexus_plugin_release</id>
+			<url>http://gec-maven-nexus.walmart.com/nexus/content/groups/public/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+	<distributionManagement>
+		<repository>
+			<id>pangaea_releases</id>
+			<url>http://gec-maven-nexus.walmart.com/nexus/content/repositories/pangaea_releases/</url>
+			<uniqueVersion>true</uniqueVersion>
+		</repository>
+		<snapshotRepository>
+			<id>pangaea_snapshots</id>
+			<url>http://gec-maven-nexus.walmart.com/nexus/content/repositories/pangaea_snapshots</url>
+			<uniqueVersion>false</uniqueVersion>
+		</snapshotRepository>
+	</distributionManagement>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
